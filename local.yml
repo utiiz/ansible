@@ -1,7 +1,18 @@
 - hosts: localhost
-  become: true
-  tasks: 
-  - name: Install zsh
-    apt: name=zsh
-  - name: Change shell
-    apt: chsh -s `which zsh`
+  vars:
+    source_key: "./.ssh/id_rsa"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+    personal: "{{ lookup('env', 'HOME') }}/personal"
+  pre_tasks:
+  - name: Update Apt
+    become: true
+    apt:
+      force_apt_get: true
+      update_cache: true
+      state: present
+    tags:
+      - install
+      - core
+  tasks:
+    - include_tasks: tasks/core.yml
+    - include_tasks: tasks/zsh.yml
