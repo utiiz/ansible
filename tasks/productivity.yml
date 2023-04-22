@@ -1,0 +1,7 @@
+- name: Install packages
+  become: true
+  apt:
+    name: [ "tmux", "wireshark", "fzf", "xclip", "ripgrep" ]
+  tags:
+    - install
+    - productivity
