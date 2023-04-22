@@ -13,3 +13,9 @@
   tags:
     - install
     - node
+
+- name: Source bashrc
+  shell: /bin/bash -c "touch ~/.bashrc && source ~/.bashrc"
+
+- name: Source zsh
+  shell: /bin/bash -c "touch ~/.zshrc && source ~/.zshrc"

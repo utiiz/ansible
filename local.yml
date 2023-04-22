@@ -18,8 +18,4 @@
     - include_tasks: tasks/git.yml
     - include_tasks: tasks/core.yml
     - include_tasks: tasks/zsh.yml
-    - include_tasks: tasks/cargo.yml
-    - include_tasks: tasks/starship.yml
-    - include_tasks: tasks/node.yml
-    - include_tasks: tasks/npm-packages.yml
     - include_tasks: tasks/productivity.yml

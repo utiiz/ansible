@@ -1,5 +1,6 @@
 - name: Install ZSH
   apt: name=zsh
+  become: true
   tags: &tags_for_zsh_tasks [ 'install', 'productivity', 'dotfiles', 'zsh' ]
 
 - name: Set login shell of user {{ ansible_env.USER }} to `/bin/zsh` with `usermod`
