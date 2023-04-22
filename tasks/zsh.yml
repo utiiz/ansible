@@ -6,21 +6,9 @@
   ansible.builtin.command: usermod --shell /bin/zsh {{ ansible_env.USER }}
   become: true
   changed_when: false
-    
-- name: Check that the somefile.conf exists
-  stat:
-    path: /home/utiiz/.oh-my-zsh
-  register: oh_my_stats
   tags: *tags_for_zsh_tasks
 
-- name: Oh-My-Zsh
-  shell: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
-  tags: *tags_for_zsh_tasks
-  when: oh_my_stats.stat.exists == False
-  become: true
-
-- name: Install zsh-autosuggestions
+- name: Add autosuggestion for zsh
   ansible.builtin.git:
-    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
-    dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
-  tags: *tags_for_zsh_tasks
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions'
+    dest: '~/.zsh/zsh-autosuggestions'
