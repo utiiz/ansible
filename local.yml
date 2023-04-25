@@ -18,4 +18,5 @@
     - include_tasks: tasks/git.yml
     - include_tasks: tasks/core.yml
     - include_tasks: tasks/zsh.yml
+    - include_tasks: tasks/nvim.yml
     - include_tasks: tasks/productivity.yml
