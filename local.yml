@@ -9,6 +9,7 @@
     apt:
       force_apt_get: true
       update_cache: true
+      cache_valid_time: 432000
       state: present
     tags:
       - install

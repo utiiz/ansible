@@ -3,8 +3,12 @@
   become: true
   tags: &tags_for_zsh_tasks [ 'install', 'productivity', 'dotfiles', 'zsh' ]
 
-- name: Set login shell of user {{ ansible_env.USER }} to `/bin/zsh` with `usermod`
-  ansible.builtin.command: usermod --shell /bin/zsh {{ ansible_env.USER }}
+- name: Get username
+  shell: /usr/bin/whoami
+  register: username
+
+- name: Set login shell of user {{ username.stdout }} to `/bin/zsh` with `usermod`
+  ansible.builtin.command: usermod --shell /bin/zsh {{ username.stdout }}
   become: true
   changed_when: false
   tags: *tags_for_zsh_tasks

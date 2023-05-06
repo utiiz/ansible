@@ -28,10 +28,22 @@
     - install
     - ssh
 
+- name: Get username
+  shell: /usr/bin/whoami
+  register: username
+  tags:
+    - dotfiles
+    - install
+    - ssh
+
 - name: Set authorized key took from file
   ansible.posix.authorized_key:
-    user: "{{ lookup('env', 'USER') }}"
+    user: "{{ username.stdout }}"
     state: present
     key: "{{ lookup('file', item) }}"
   with_fileglob:
     - "{{ lookup('env', 'HOME') }}/.ssh/*.pub"
+  tags:
+    - dotfiles
+    - install
+    - ssh
