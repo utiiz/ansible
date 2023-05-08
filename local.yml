@@ -24,6 +24,9 @@
     - include_tasks: tasks/core.yml
       tags:
         - core
+    - include_tasks: tasks/cargo.yml
+      tags:
+        - cargo
     - include_tasks: tasks/zsh.yml
       tags:
         - zsh
