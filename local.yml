@@ -16,9 +16,23 @@
       - core
   tasks:
     - include_tasks: tasks/ssh.yml
+      tags:
+        - ssh
     - include_tasks: tasks/git.yml
+      tags:
+        - git
     - include_tasks: tasks/core.yml
+      tags:
+        - core
     - include_tasks: tasks/zsh.yml
+      tags:
+        - zsh
     - include_tasks: tasks/nvim.yml
+      tags:
+        - nvim
     - include_tasks: tasks/dotfiles.yml
+      tags:
+        - dotfiles
     - include_tasks: tasks/productivity.yml
+      tags:
+        - productivity
